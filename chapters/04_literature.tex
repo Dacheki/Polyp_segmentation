@@ -1,0 +1,107 @@
+\chapter{Literature Review}
+
+The application of CNN-based models and data augmentation techniques in medical imaging has significantly advanced over the past decade, particularly in the domain of polyp
+segmentation. This section synthesizes findings from contemporary research, focusing on
+segmentation architectures, encoders, and augmentation strategies for improving segmentation performance [1, 2, 3, 4].
+Colorectal cancer is one of the most common forms of cancer worldwide. It encompasses both colorectal and rectal cancers and poses a significant threat to health.
+Colorectal cancer ranks as the third most common cancer, accounting for over 10 million
+new cases annually [5]. In 2020, approximately 1.9 million new cases of colorectal cancer
+were reported globally, representing 9.7% of all cancer cases [6].
+One of the most effective methods for early detection of colorectal cancer is colonoscopy,
+a procedure that allows doctors to visually inspect the inner walls of the intestines for
+polyps and other abnormal changes. However, despite the high effectiveness of this method,
+detecting polyps, which can be precursors to cancer, remains a challenging task [2]. Polyps
+can be small, poorly visible, or hidden due to the anatomical features of the colon, increasing the likelihood of their being missed during the procedure [3].
+In recent years, with the advancement of computer vision and machine learning
+technologies, new approaches have emerged that enhance diagnostic accuracy and reduce
+the workload of specialists. In particular, the use of deep learning methods for segmenting
+images obtained through colonoscopy allows for automatic and precise detection of polyps,
+significantly speeding up the diagnostic process and improving its accuracy. These methods
+are actively being researched and implemented in clinical practice, leading to improved
+treatment outcomes and a reduction in colorectal cancer mortality rates [4].
+Polyps segmentation in the intestines using artificial intelligence (AI) and deep
+neural networks is a promising direction in medical diagnostics. Training models using
+large annotated datasets enables the development of highly accurate algorithms capable of
+not only detecting polyps but also classifying them based on their potential for malignant
+transformation. This opens new horizons for personalized treatment and cancer prevention
+strategies [7].
+8
+The application of deep learning techniques, especially neural networks, has gained
+significant attention in the medical field, particularly in image analysis. Among the various
+tasks in medical imaging, image segmentation has proven to be one of the most crucial
+challenges, as it helps in delineating structures of interest within the image, such as organs,
+tumors, or pathological lesions [8].
+Deep learning-based segmentation methods, specifically convolutional neural networks (CNNs), have become the state-of-the-art in various medical imaging applications.
+CNNs are highly effective due to their ability to automatically learn spatial hierarchies of
+features, making them ideal for tasks like organ segmentation, tumor detection, and polyp
+detection in colonoscopy images [9].
+One of the key advantages of using deep learning for segmentation tasks is the
+reduction in manual labor required for annotating medical images. This has not only
+accelerated the pace of medical research but also enhanced diagnostic accuracy. Moreover, neural networks can assist clinicians by providing reliable results that complement
+traditional methods, potentially leading to earlier detection of diseases such as cancer [10].
+Several methods have been proposed for segmentation tasks in medical imaging,
+including fully convolutional networks (FCNs), U-Net, and Mask R-CNN. These architectures have demonstrated exceptional performance in both 2D and 3D medical image
+segmentation [11]. U-Net, in particular, has been extensively used in tasks involving organ
+segmentation, such as in MRI or CT scans, due to its efficient use of both global context
+and fine details [12].
+Recent advances also involve the integration of multi-modal data, where models
+combine information from different imaging modalities, such as CT, MRI, and endoscopic
+images, to improve segmentation accuracy [13]. Furthermore, the advent of transfer learning has allowed neural networks to achieve high performance even with limited annotated
+data, making deep learning models increasingly accessible for medical practitioners [14].
+The potential of neural networks in medical segmentation is vast. However, challenges remain, including the need for high-quality annotated data, dealing with the variability of imaging data across different patients and devices, and ensuring the interpretability
+and trustworthiness of deep learning models in clinical settings [15].
+Despite the significant advancements in deep learning for medical image segmentation, several challenges remain. One of the primary issues is the variability of medical
+images across different patients, scanners, and imaging modalities. This variation introduces significant noise and inconsistency in the data, making it difficult for segmentation
+models to generalize well across diverse populations and imaging conditions [16]. Moreover, medical images, particularly those used for tasks like polyp detection, often suffer
+9
+from poor image quality due to factors like motion artifacts, suboptimal lighting, and
+differences in the expertise of the imaging personnel [17].
+A significant hurdle for deep learning in medical imaging is the scarcity of highquality annotated data. Annotating medical images is a time-consuming and resourceintensive process that often requires the expertise of medical professionals. As a result, the
+availability of large, high-quality annotated datasets is limited, and many deep learning
+models are trained on relatively small datasets. This issue is particularly pronounced
+for tasks such as polyp segmentation, where obtaining accurate annotations for every
+image is both challenging and expensive [18]. Furthermore, the lack of diverse datasets
+in terms of patient demographics (age, gender, ethnicity) and clinical conditions can limit
+the performance of models when applied to real-world scenarios [19].
+To address these issues, several techniques have been proposed. One such method is
+data augmentation, which involves artificially expanding the dataset by applying transformations such as rotation, scaling, and flipping to the images. This helps mitigate overfitting
+and improve model robustness [20]. Another strategy is semi-supervised learning, where
+models are trained using a small amount of labeled data and a larger volume of unlabeled
+data [21]. Additionally, transfer learning has proven effective, allowing models pre-trained
+on large, publicly available datasets to be fine-tuned on smaller medical datasets, thereby
+improving generalization performance [14].
+Several deep learning-based models have already been implemented for medical
+image segmentation tasks, with some achieving state-of-the-art results in colorectal polyp
+detection. Among the most prominent architectures are U-Net and its variants, such as
+U-Net++, which have been extensively used in medical imaging due to their ability to
+capture both global context and fine-grained details of images [22]. Another successful
+implementation is DeepLab, a model that incorporates dilated convolutions to capture
+multi-scale information, which is particularly useful for segmenting complex structures like
+polyps in colonoscopy images [23].
+In addition to the traditional segmentation tasks, AI-driven systems have also been
+employed in robotic-assisted surgery. One example is the use of AI for polyp detection
+during robot-assisted colonoscopy, where AI models guide the robot in real-time to identify
+suspicious areas that require biopsy. These systems help improve the accuracy and speed of
+procedures, reduce the cognitive load on surgeons, and increase the likelihood of detecting
+early-stage cancer [24].
+Another exciting application of deep learning in medicine is in robot-assisted surgeries, such as those performed by the Da Vinci Surgical System. The Da Vinci robot, which
+is used for minimally invasive surgeries, can be enhanced with AI-driven image segmen10
+tation techniques to automatically identify and highlight key structures like blood vessels,
+tumors, or polyps. This real-time feedback aids surgeons in making precise decisions, ultimately improving patient outcomes and reducing surgical risks [25]. Additionally, the
+development of robots like DaLi (Deep Learning Robot for Invasive Surgery) marks a significant step forward in integrating AI with robotic surgery. These robots are equipped with
+advanced segmentation algorithms to identify critical anatomical structures in real-time,
+assisting in complex procedures such as cancer removal, organ transplantations, and polyp
+excisions during colonoscopies. The ability to precisely segment and classify structures in
+medical images significantly enhances the robot’s performance, ensuring that surgeons can
+make more informed decisions with less risk of human error [26].
+In conclusion, while the application of deep learning techniques to medical image
+segmentation has revolutionized the detection and treatment of diseases such as colorectal
+cancer, several challenges remain. Issues related to data scarcity, variability in imaging
+conditions, and the need for accurate annotations continue to hinder the widespread implementation of deep learning models in clinical settings. However, promising advancements
+in data augmentation, semi-supervised learning, and transfer learning offer potential solutions to these problems [27].
+Future work in the field should focus on improving the generalization ability of
+models across diverse populations and clinical conditions. Additionally, the integration of
+AI with other diagnostic tools, such as robotic systems, holds great promise for improving
+the accuracy, speed, and efficiency of medical procedures. As more annotated datasets
+become available and as model architectures continue to evolve, deep learning-based segmentation systems will likely become a standard component of medical imaging workflows,
+contributing to earlier diagnosis and better treatment outcomes.

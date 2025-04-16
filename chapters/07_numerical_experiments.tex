@@ -1,0 +1,112 @@
+\chapter{Numerical Experiments}
+
+In this section, we present the results of numerical experiments conducted to evaluate the performance of the U-Net-based polyp segmentation models. These experiments serve to validate the approaches discussed in previous sections, providing insights into the effectiveness of different training strategies, loss functions, and data augmentation techniques. The results are presented in the form of tables, plots, and other visualizations.
+
+\section{Experimental Setup}
+The numerical experiments are conducted using the following setup:
+\begin{itemize}
+    \item \textbf{Programming Languages and Libraries:} Python with PyTorch and TensorFlow frameworks/////
+    \item \textbf{Hardware:} NVIDIA GPU (e.g., RTX 3060Ti) with CUDA////
+    \item \textbf{Software Tools:} Jupyter Notebook////
+\end{itemize}
+
+
+\section{Experimental Setup}
+The numerical experiments are conducted using the following setup:
+\begin{itemize}
+    \item \textbf{Programming Languages and Libraries:} Python with PyTorch and TensorFlow frameworks/////
+    \item \textbf{Hardware:} NVIDIA GPU (e.g., RTX 3060Ti) with CUDA////
+    \item \textbf{Software Tools:} tools stuff ////
+\end{itemize}
+
+
+\section{Datasets}
+The experiments use multiple publicly available datasets for colorectal polyp segmentation, each varying in image resolution, number of samples, and polyp distribution. A summary of these datasets is provided in Table~\ref{tab:datasets}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Summary of publicly available colorectal polyp segmentation datasets.}
+    \label{tab:datasets}
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        \textbf{Dataset} & \textbf{Number} & \textbf{Image Size} & \textbf{Healthy Count} & \textbf{Polyp Count} & \textbf{Polyp Area (\%)} \\
+        \hline
+        Kvasir-SEG & 1000 & 332×352 to 1920×1072 & 0 & 1000 & 0.59 - 81.63 \\
+        CVC-ClinicDB & 612 & 384×288 & 0 & 612 & 0.34 - 48.98 \\
+        CVC-ColonDB & 380 & 574×500 & 0 & 380 & 0.3 - 63.15 \\
+        EndoTect Dataset & 200 & 720×576 to 1920×1072 & 0 & 200 & 1.07 - 59.46 \\
+        Gastrovision & 1797 & 720×576 to 1920×1080 & 1797 & 0 & 0.0 \\
+        HyperKvasir & 1000 & 332×352 to 1920×1072 & 0 & 1000 & 0.57 - 81.63 \\
+        PolipGen & 6500 & 720×576 to 1920×1080 & 4790 & 1710 & 0.0 - 69.82 \\
+        WCE & 200 & 720×576 & 200 & 0 & 0.0 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Each dataset is split into training (80\%), validation (10\%), and test (10\%) sets. The combination of datasets ensures diversity in polyp appearance, lighting conditions, and anatomical structures, enhancing the generalization capability of the segmentation models.
+
+
+
+\section{Evaluation Metrics}
+\begin{itemize}
+    \item \textbf{ROC Curve and AUC:} ROC (Receiver Operating Characteristic) curve plots True Positive Rate (TPR) versus False Positive Rate (FPR) at various thresholds:
+    \begin{equation}
+        TPR = \frac{TP}{TP + FN}, \quad FPR = \frac{FP}{FP + TN}
+    \end{equation}
+
+    \item \textbf{Precision and Recall:}
+    \begin{equation}
+        \text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}
+    \end{equation}
+
+    \item \textbf{F1-score:}
+    \begin{equation}
+        F1 = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+    \end{equation}
+
+    \item \textbf{Intersection over Union (IoU):}
+    \begin{equation}
+        IoU = \frac{|X \cap Y|}{|X \cup Y|}
+    \end{equation}
+
+
+\end{itemize}
+
+\section{Experimental Results}
+We compare different variations of the U-Net model, including:
+\begin{itemize}
+    \item \textbf{U-Net++} 
+    \item \textbf{U-Net++} 
+    \item \textbf{U-Net++} 
+\end{itemize}
+Results are presented in Table~\ref{tab::methods_metrics}, showing the segmentation performance of each model.
+
+\begin{table}[!htb]
+    \centering
+    \caption{U-Net}
+    \begin{tabular}{lccc}
+    \toprule
+    Model & IoU (\%) & Dice Coefficient (\%) & Accuracy (\%) \\
+    \midrule
+    U-Net & $0$ & $0$ & $0$ \\
+    U-Net & $\mathbf{0}$ & $\mathbf{0}$ & $0$ \\
+    U-Net & $0$ & $0$ & $0$ \\
+    \bottomrule
+    \end{tabular}
+    \label{tab::methods_metrics}
+\end{table}
+
+\section{Comparison with Other Method with sms. The comparative results are shown in Figure~\ref{fig::comparison}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/comparison_plot.pdf}
+    \caption{Comparison of U-Net++ with other state-of-the-art segmentation methods.}
+    \label{fig::comparison}
+\end{figure}
+
+\section{Discussion and Benefits of the Proposed Method}
+Based on the experimental results:
+\begin{itemize}
+
+\end{itemize}

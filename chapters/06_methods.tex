@@ -1,0 +1,157 @@
+\chapter{Methodology}
+
+This section describes in detail the theoretical approaches, methods, and algorithms utilized in the research, their characteristics, and the expected outcomes of each method.
+
+This study is based on the U-Net architecture, a widely adopted convolutional neural network (CNN) for medical image segmentation. U-Net’s encoder-decoder structure enables effective learning of both global and fine-grained features, making it well-suited for polyp segmentation tasks. The research will systematically explore variations in training strategies, loss functions, and augmentation techniques to enhance U-Net’s segmentation accuracy and generalization.
+
+\section{U-Net Architecture Overview}
+U-Net is a fully convolutional network (FCN) designed for pixel-wise segmentation, originally developed for biomedical image analysis. It consists of an encoder-decoder structure with skip connections that allow the preservation of spatial information and improved localization accuracy.
+
+\subsection{Encoder (Contracting Path)}
+The encoder follows a typical convolutional network structure, extracting hierarchical features using:
+\begin{itemize}
+    \item \textbf{Convolutional Layers:} Each stage consists of two \(3 \times 3\) convolutional layers followed by ReLU activation.
+    \item \textbf{Downsampling:} A \(2 \times 2\) max-pooling layer with a stride of 2 reduces spatial dimensions while increasing feature depth.
+    \item \textbf{Feature Extraction:} As depth increases, the model captures complex hierarchical features, transitioning from low-level edge detection to high-level contextual representations.
+\end{itemize}
+Mathematically, a convolution operation in each layer is defined as:
+\begin{equation}
+    X' = f(W * X + b)
+\end{equation}
+where \(X\) is the input feature map, \(W\) is the convolutional filter, \(b\) is the bias term, and \(f\) represents the ReLU activation function.
+
+\subsection{Decoder (Expanding Path)}
+The decoder reconstructs the segmentation map by upsampling the feature maps and restoring spatial resolution using:
+\begin{itemize}
+    \item \textbf{Transposed Convolutions:} Each upsampling step consists of a \(2 \times 2\) transposed convolution that doubles the spatial dimensions.
+    \item \textbf{Skip Connections:} Feature maps from the encoder are concatenated to the corresponding decoder layers to retain fine-grained spatial details.
+    \item \textbf{Final Convolutional Layer:} A \(1 \times 1\) convolution maps the feature representation into the final segmentation mask.
+\end{itemize}
+Formally, the upsampling operation is defined as:
+\begin{equation}
+    X' = W^T * X
+\end{equation}
+where \(W^T\) is the transposed convolutional filter and \(X\) is the input feature map.
+
+\subsection{Skip Connections and Feature Fusion}
+A key feature of U-Net is the use of skip connections, which allow the model to retain high-resolution details lost during downsampling. These connections:
+\begin{itemize}
+    \item Improve gradient flow, facilitating stable training.
+    \item Preserve spatial details, crucial for accurate polyp segmentation.
+    \item Enhance segmentation accuracy by incorporating both local and global features.
+\end{itemize}
+The skip connection operation is mathematically expressed as:
+\begin{equation}
+    X_{dec} = X_{dec} + X_{enc}
+\end{equation}
+where \(X_{enc}\) and \(X_{dec}\) represent feature maps from the encoder and decoder, respectively.
+
+\subsection{Final Output and Segmentation Map}
+The last layer applies a softmax activation function to generate pixel-wise probability maps for segmentation:
+\begin{equation}
+    P(y_i | X) = \frac{e^{x_i}}{\sum_j e^{x_j}}
+\end{equation}
+where \(P(y_i | X)\) is the predicted probability for class \(y_i\), and \(x_i\) represents the feature vector at pixel \(i\).
+
+This structured approach enables U-Net to effectively handle medical image segmentation tasks, making it an ideal choice for colorectal polyp segmentation in this research. 
+
+
+\section{Effect of Data Distribution: Healthy vs. Polyp-Containing Samples}
+An essential aspect of model training is the distribution of healthy intestine images versus images containing polyps. The ratio of these categories can significantly affect segmentation performance and generalization. This study examines various dataset compositions to analyze their impact on model learning:
+\begin{itemize}
+    \item \textbf{Balanced Dataset:} Equal proportions of healthy and polyp-containing images to avoid model bias.
+    \item \textbf{Polyp-Enriched Dataset:} Higher proportion of polyp-containing images to enhance sensitivity toward detecting polyps.
+    \item \textbf{Healthy-Enriched Dataset:} Higher proportion of healthy intestine images to reduce false positives.
+\end{itemize}
+The goal is to determine the optimal balance that maximizes segmentation accuracy while minimizing false positives and false negatives.
+
+
+\section{Training Approaches: Full-Image vs. Patch-Based Learning}
+The CNN models in this research are trained using two distinct approaches: full-image training and patch-based training. 
+
+\begin{itemize}
+    \item \textbf{Full-Image Training:} In this approach, the CNN model learns directly from entire colonoscopy images. This method captures large-scale spatial information and contextual relationships but can be computationally intensive.
+    \item \textbf{Patch-Based Training:} The input images are divided into smaller overlapping patches of varying sizes \((p_x, p_y)\). This technique enhances the model's ability to capture detailed local features, improving segmentation accuracy, especially for small polyps. The trade-off is that global spatial relationships might be less preserved. Mathematically, if an image \(I\) of size \(H \times W\) is divided into patches of size \(p_x \times p_y\), the number of patches \(N\) is computed as:
+    \begin{equation}
+        N = \frac{H}{p_x} \times \frac{W}{p_y}.
+    \end{equation}
+\end{itemize}
+By systematically evaluating both approaches, we aim to determine the most effective training strategy for polyp segmentation.
+
+\section{Training Strategies and Hyperparameter Tuning}
+In this phase, diverse training strategies and hyperparameter tuning methods are systematically explored, including:
+\begin{itemize}
+    \item \textbf{Optimization Algorithms:} Comparison between Stochastic Gradient Descent (SGD) and Adam optimizer, defined respectively as:
+    \begin{equation}
+        \theta \leftarrow \theta - \eta \nabla_\theta J(\theta),
+    \end{equation}
+    and
+    \begin{equation}
+        m_t = \beta_1 m_{t-1} + (1-\beta_1) \nabla_\theta J(\theta_t), \quad v_t = \beta_2 v_{t-1} + (1-\beta_2) (\nabla_\theta J(\theta_t))^2.
+    \end{equation}
+
+    \item \textbf{Learning Rate Scheduling:} Including step decay and cosine annealing to optimize learning rate adjustments during training.
+    \item \textbf{Early Stopping:} Applied to avoid overfitting by terminating training when validation accuracy no longer improves.
+\end{itemize}
+These strategies aim to determine the most effective hyperparameters and training settings that maximize model accuracy and ensure robust generalization.
+
+
+\section{Loss Functions Selection}
+This component involves an in-depth exploration and comparison of different loss functions and their combinations to optimize CNN performance for polyp segmentation. Loss functions evaluated include:
+\begin{itemize}
+    \item \textbf{Cross-Entropy Loss:}
+    \begin{equation}
+        L_{CE} = -\sum_{i}(y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i))
+    \end{equation}
+    \item \textbf{Dice Loss:}
+    \begin{equation}
+        L_{Dice} = 1 - \frac{2 \sum_i y_i \hat{y}_i + \epsilon}{\sum_i y_i + \sum_i \hat{y}_i + \epsilon}
+    \end{equation}
+    \item \textbf{Focal Loss:}
+    \begin{equation}
+        L_{focal} = -\sum_i \alpha (1 - \hat{y}_i)^\gamma y_i \log(\hat{y}_i)
+    \end{equation}
+\end{itemize}
+The expected outcome is identifying the loss function or a combination that significantly improves segmentation accuracy and training stability.
+
+
+
+\section{Data Augmentation Techniques}
+Data augmentation techniques enhance the diversity and robustness of training datasets, helping to reduce overfitting and improve model generalization. This research explores the following techniques:
+
+\subsection{Geometric Transformations}
+Includes rotation, translation, scaling, and flipping. For example, rotation transformation is defined as:
+\begin{equation}
+    \begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}
+\end{equation}
+
+\subsection{Intensity Transformations}
+Brightness and contrast adjustments, formulated as:
+\begin{equation}
+    I_{new}(x,y) = \alpha \cdot I(x,y) + \beta
+\end{equation}
+where \(\alpha\) controls contrast and \(\beta\) controls brightness.
+
+\subsection{Noise Addition}
+Adding Gaussian noise:
+\begin{equation}
+    I_{noisy}(x,y) = I(x,y) + n, \quad n \sim \mathcal{N}(\mu, \sigma^2)
+\end{equation}
+
+\subsection{Random Erasing}
+Randomly replacing pixels within selected regions with random or constant values:
+\begin{equation}
+    I_{erased}(x,y) = \begin{cases}
+    random(I), & \text{if } (x,y) \in R \\
+    I(x,y), & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+\subsection{Color Space Transformations}
+Transforming between RGB and alternative spaces like HSV to exploit different image properties for augmentation.
+
+The detailed exploration and systematic application of these augmentation techniques are expected to significantly improve the generalizability and robustness of CNN-based segmentation models, enhancing their effectiveness in clinical settings for colorectal polyp detection.
+
+\section{Attention}
+\section{Attention}
+\section{Attention}

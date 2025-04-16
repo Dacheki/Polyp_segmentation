@@ -1,0 +1,27 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix file.
+%% You can process specific files by typing their names in at the 
+%% \files=
+%% prompt when you run the file main.tex through LaTeX.
+\chapter{Introduction}
+
+This section provides an overview of the research topic, outlines the primary ideas of existing semantic segmentation methods in biomedical applications, analyzes their advantages and limitations, and supports the discussion with an extensive literature review.
+
+\paragraph{Relevance.}
+Colorectal cancer (CRC) is among the leading causes of cancer-related deaths globally, making early detection and accurate diagnosis critical factors in patient prognosis~\cite{siegel2020cancer}. Colonoscopy remains the gold standard for CRC screening due to its high sensitivity and capability for direct intervention~\cite{rex2015colonoscopy}. Nonetheless, the effectiveness of colonoscopy heavily depends on the clinician's ability to accurately detect and segment colorectal polyps—precancerous lesions that significantly impact the early detection of colorectal cancer.
+
+Recent advances in artificial intelligence, particularly convolutional neural networks (CNNs), have shown promising results in automating the semantic segmentation of medical images, thus potentially reducing reliance on clinician expertise and improving diagnostic accuracy~\cite{ronneberger2015u}. CNN-based semantic segmentation, involving pixel-level labeling of images, offers substantial benefits for polyp detection tasks, yet challenges remain, including generalization across diverse patient populations and variability in clinical environments~\cite{fan2020pranet}.
+
+\paragraph{Main purpose of the research.}
+This thesis aims to explore CNN-based semantic segmentation techniques to identify colorectal polyps in colonoscopy imagery. Specifically, the research evaluates several key components affecting CNN performance: model architectures, training approaches, data augmentation methods, and loss function selection. The ultimate goal is to identify and implement an effective CNN-based segmentation model capable of achieving superior accuracy compared to existing state-of-the-art (SOTA) approaches.
+
+\paragraph{Scientific novelty.}
+The novelty of this research lies in the comprehensive comparative analysis of multiple CNN architectures and the systematic assessment of various training strategies, data augmentation techniques, and loss functions. Unlike existing literature that often focuses on individual model improvements, this work adopts a holistic approach to thoroughly understand the combined influence of these factors, providing practical insights and guidelines for enhancing model robustness and generalization.
+
+\paragraph{Statements for defense.}
+\begin{enumerate}
+\item CNN-based semantic segmentation significantly improves the accuracy and reliability of colorectal polyp detection compared to traditional methods.
+\item Comprehensive evaluation of CNN architectures, data augmentation, and loss functions contributes to enhanced generalization performance across diverse datasets.
+\item The proposed CNN model configuration consistently outperforms current state-of-the-art approaches, demonstrating its effectiveness and potential clinical applicability.
+\end{enumerate}

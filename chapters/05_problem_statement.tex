@@ -1,0 +1,39 @@
+\chapter{Problem Statement}
+
+In this section, the main notations, definitions, and auxiliary facts relevant to the study are introduced. Additionally, the overarching purpose of the research project is clearly and formally stated.
+
+Semantic segmentation aims to classify each pixel in an image into predefined semantic categories. Formally, given an input image \( X \in \mathbb{R}^{H \times W \times C} \), where \(H\) and \(W\) represent height and width, and \(C\) denotes color channels, the segmentation task involves generating a segmentation map \( Y \in \{0,1\}^{H \times W} \), where each pixel is assigned a binary class label indicating the presence (1) or absence (0) of a polyp.
+
+The segmentation model \( f_{\theta}(X) \) parameterized by \(\theta\) is trained to minimize a suitable loss function \(\mathcal{L}\), such as cross-entropy or dice loss, defined as:
+\begin{equation}
+    \mathcal{L}(\theta) = - \frac{1}{N}\sum_{i=1}^{N}[y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)],
+    \label{eq::cross_entropy}
+\end{equation}
+where \( y_i \) represents the true label for pixel \( i \), \( \hat{y}_i \) represents the predicted probability, and \(N\) is the total number of pixels.
+
+The goal of this research is to formally evaluate convolutional neural network (CNN) architectures for polyp segmentation by systematically investigating various aspects of training methods, data augmentation techniques, and loss function selections. This leads to the central research problem:
+
+\begin{Def}
+  Let \(\mathcal{D} = \{(X_i, Y_i)\}_{i=1}^{M}\) denote a dataset of colonoscopy images \(X_i\) and corresponding segmentation maps \(Y_i\). The segmentation problem addressed in this research involves finding optimal CNN model parameters \(\theta^*\) such that:
+  \begin{equation}
+      \theta^* = \arg\min_{\theta} \mathbb{E}_{(X,Y)\sim\mathcal{D}}[\mathcal{L}(f_{\theta}(X), Y)],
+      \label{eq::optimal_theta}
+  \end{equation}
+  which ensures the best generalization performance across diverse clinical datasets.
+\end{Def}
+
+The evaluation criterion for assessing segmentation quality is typically the Intersection-over-Union (IoU), defined as:
+\begin{equation}
+    \text{IoU} = \frac{TP}{TP + FP + FN},
+    \label{eq::iou}
+\end{equation}
+where \(TP\), \(FP\), and \(FN\) represent true positives, false positives, and false negatives, respectively.
+
+Thus, the formal purpose of this project is concisely summarized as:
+\begin{equation*}
+    \text{Maximize IoU through systematic evaluation of CNN segmentation strategies.}
+\end{equation*}
+
+The study aims to provide a comprehensive analysis leading to robust CNN architectures capable of surpassing existing state-of-the-art performance benchmarks in colorectal polyp segmentation.
+
+
